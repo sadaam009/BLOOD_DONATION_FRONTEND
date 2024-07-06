@@ -17,6 +17,7 @@ import Dashboard from './Components/Dashboard'
 import User from './Dashcomponents/User'
 import Blooddoner from './Dashcomponents/Blooddoner'
 import Bloodrequest from './Dashcomponents/Bloodrequest'
+import Userupdate from './Dashcomponents/Userupdate'
 
 
 
@@ -49,6 +50,7 @@ function App() {
    <Route path='/users' element={<User/>}/>
    <Route path='/donates' element={<Blooddoner/>}/>
    <Route path='/donations' element={<Bloodrequest/>}/>
+   <Route path='/donations' element={<Userupdate/>}/>
    
       {/* Dashboard Routers */}
    

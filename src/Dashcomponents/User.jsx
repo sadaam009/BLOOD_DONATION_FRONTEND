@@ -3,6 +3,7 @@ import Dashboard from '../Components/Dashboard'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Dashheader from './Dashheader';
+import { Link } from 'react-router-dom';
 
 export default function User() {
   const { id } = useParams();
@@ -25,6 +26,12 @@ export default function User() {
       console.log(error);
     }
   };
+  // const userupdate = async (e) => {
+  //   e.preventDefault();
+    
+  //   await axios.put(`http://localhost:8080/update/${id}`,users)
+  //  alert("Successfull update")
+  // };
 
   useEffect(() => {
     getAllUsers();
@@ -60,7 +67,7 @@ export default function User() {
                 <td>{user.email}</td>
                 <td>{user.password}</td>
                 <td className='space-x-2'>
-                  <button type="button" className="btn btn-primary py-2 px-3">Edit</button>
+                <Link to={`/updateuser/${user.id}  `}  >  <button className='btn btn-outline-primary mx-2'>Edit</button></Link>
                   <button type="button" className="btn btn-outline-primary py-2 px-3">View</button>
                   <button onClick={() => deleteUser(user.id)} type="button" className="btn btn-danger py-2 px-3">Delete</button>
                 </td>

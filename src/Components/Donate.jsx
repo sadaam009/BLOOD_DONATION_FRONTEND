@@ -1,28 +1,33 @@
 
 import { useState } from 'react'
+import axios from 'axios';
 
 export default function Donate() {
-    const [formData, setFormData] = useState({
+    const [doners, setdoners] = useState({
         name: '',
         email: '',
         phone: '',
         bloodType: '',
-        lastDonationDate: '',
+      Tariikh: '',
         message: ''
       });
     
       const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-          ...formData,
+        setdoners({
+          ...doners,
           [name]: value
         });
       };
-    
-      const handleSubmit = (e) => {
+      const Register = async (e) => {
         e.preventDefault();
-        console.log('Form Data:', formData);
-        // Here you can add code to send formData to a server or API endpoint
+        try {
+          const res = await axios.post("http://localhost:9090/adddonate", doners);
+         setdoners(res.data);
+          alert("Successful Blood Request");
+        } catch (error) {
+          console.log(error);
+        }
       };
   return (
     <div className=' flex  bg-[#F5F5F5] w-[100vw] h-[110vh]  justify-center mt-[3rem] '>
@@ -31,7 +36,7 @@ export default function Donate() {
 
         <div className="mt-[2rem] space-y-2   ">
         <h1 className=' text-center text-[2.5rem] font-semibold  '><span className='text-[#DC143C] space-y-3  '>Donation</span> Form</h1>
-        <form onSubmit={handleSubmit} className=" bg-white  w-[40vw] rounded shadow-md mt-3 px-6 py-4">
+        <form onSubmit={Register} className=" bg-white  w-[40vw] rounded shadow-md mt-3 px-6 py-4">
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
           Name:
@@ -40,7 +45,7 @@ export default function Donate() {
           type="text"
           id="name"
           name="name"
-          value={formData.name}
+          value={doners.name}
           onChange={handleChange}
           required
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -54,7 +59,7 @@ export default function Donate() {
           type="email"
           id="email"
           name="email"
-          value={formData.email}
+          value={doners.email}
           onChange={handleChange}
           required
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -68,7 +73,7 @@ export default function Donate() {
           type="tel"
           id="phone"
           name="phone"
-          value={formData.phone}
+          value={doners.phone}
           onChange={handleChange}
           required
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -81,7 +86,7 @@ export default function Donate() {
         <select
           id="bloodType"
           name="bloodType"
-          value={formData.bloodType}
+          value={doners.bloodType}
           onChange={handleChange}
           required
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -105,7 +110,7 @@ export default function Donate() {
           type="date"
           id="lastDonationDate"
           name="lastDonationDate"
-          value={formData.lastDonationDate}
+          value={doners.lastDonationDate}
           onChange={handleChange}
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
@@ -117,7 +122,7 @@ export default function Donate() {
         <textarea
           id="message"
           name="message"
-          value={formData.message}
+          value={doners.message}
           onChange={handleChange}
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
