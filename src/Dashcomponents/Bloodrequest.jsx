@@ -1,18 +1,29 @@
 
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,Link } from 'react-router-dom'
 import Dashboard from '../Components/Dashboard';
 import axios from 'axios';
 
 
 export default function Bloodrequest() {
-  const{id}=useParams
-    const[data,setdata]=useState([])
+  // const{id}=useParams()
+    const[info,setInfo] =useState([])
+
   const getdonations= async()=>{
     try{
      const res= await axios.get("http://localhost:9090/alldonations")
-      setdata(res.data)
+      setInfo(res.data)
       console.log(res.data)
+    } catch(error) {
+   console.log(error)
+    }
+
+   };
+   const deteledonation= async(id)=>{
+    try{
+     await axios.delete(`http://localhost:9090/donDelete/${id}`);
+      // setInfo(res.data)
+      // console.log(res.data)
     } catch(error) {
    console.log(error)
     }
@@ -20,7 +31,7 @@ export default function Bloodrequest() {
    };
    useEffect(()=>{
     getdonations()
-   })
+   },[])
 
 
   return (
@@ -42,25 +53,25 @@ export default function Bloodrequest() {
   </thead>
   <tbody>
 
-   {data.map((xog, index) => (
-    <tr >
+  {
+           info.map((xog, index) => (
+                              <tr key={xog.id}>
   
-    <th scope="row"> {index+1} </th>
-    <td>{xog.name} </td>
-    <td>{xog.age} </td>
-    <td>{xog.bloodgroup} </td>
-    <td>{xog.number} </td>
-    <td>{xog.hospital} </td>
-    <td>{xog.Tariikh} </td>
-    <td className='space-x-2'>
-                  <button type="button" className="btn btn-primary py-2 px-3">Edit</button>
-                  <button type="button" className="btn btn-outline-primary py-2 px-3">View</button>
-                  <button  type="button" className="btn btn-danger py-2 px-3">Delete</button>
-                </td>
-  </tr>
-     
-
-  ))}
+                              <th scope="row"> {index+1} </th>
+                              <td>{xog.name} </td>
+                              <td>{xog.age} </td>
+                              <td>{xog.bloodgroup} </td>
+                              <td>{xog.number} </td>
+                              <td>{xog.hospital} </td>
+                              <td>{xog.Tariikh} </td>
+                              <td className='space-x-2'>
+                              <Link to={`/updaterequest/${xog.id}  `} type="button" className="btn btn-primary py-2 px-3">Edit</Link>
+                              <Link to={`/Veiwdonations/${xog.id}  `} type="button" className="btn btn-outline-primary py-2 px-3">Veiw</Link>
+                                            <button onClick={() => deteledonation(xog.id)}  type="button" className="btn btn-danger py-2 px-3">Delete</button>
+                                          </td>
+                            </tr>
+                            ))
+                        }
 
    
   </tbody>

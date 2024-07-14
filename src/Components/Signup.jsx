@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ const Signup = () => {
   });
 
   const { name, address, email, password } = formData;
+  const navigate = useNavigate();
 
   const Register = async (e) => {
     e.preventDefault();
@@ -20,6 +21,10 @@ const Signup = () => {
       const res = await axios.post("http://localhost:9090/adduser", formData);
       console.log(res.data);
       toast.success("Successfully registered");
+
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
     } catch (error) {
       console.log(error);
       toast.error("Registration failed");
@@ -45,7 +50,7 @@ const Signup = () => {
               Name
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className=" shadow-sm appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               type="text"
               name="name"
@@ -59,7 +64,7 @@ const Signup = () => {
               Address
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-sm appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="address"
               type="text"
               name="address"
@@ -73,7 +78,7 @@ const Signup = () => {
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-sm appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
               name="email"
@@ -87,7 +92,7 @@ const Signup = () => {
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-sm appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               name="password"

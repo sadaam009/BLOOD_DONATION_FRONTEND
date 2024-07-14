@@ -38,15 +38,16 @@ export default function User() {
   }, []);
 
   return (
-    <div className='flex'>
+    <div className='flex relative'>
       <Dashboard />
    
       
       <div className="w-full ml-3   ">
-      <div className=" mb-[7rem]  ">
+      <div className=" mb-[10rem]  ">
    <Dashheader   />
       </div>
-    
+      <Link to="/Kudaruser" className=' absolute right-[2rem] font-bold bg-blue-600 text-white py-2
+       px-4 rounded-md top-[10rem]  '>Add User</Link>
         <table className="table table-striped">
           <thead>
             <tr className='ml-6'>
@@ -66,9 +67,9 @@ export default function User() {
                 <td>{user.address}</td>
                 <td>{user.email}</td>
                 <td>{user.password}</td>
-                <td className='space-x-2'>
-                <Link to={`/updateuser/${user.id}  `}  >  <button className='btn btn-outline-primary mx-2'>Edit</button></Link>
-                  <button type="button" className="btn btn-outline-primary py-2 px-3">View</button>
+                <td className='space-x-1'>
+                <Link to={`/updateuser/${user.id}  `}  >  <button className='btn btn-primary mx-2'>Edit</button></Link>
+                <Link to={`/Edituser/${user.id}  `}  >  <button className='btn btn-outline-primary mx-2'>View</button></Link>
                   <button onClick={() => deleteUser(user.id)} type="button" className="btn btn-danger py-2 px-3">Delete</button>
                 </td>
               </tr>

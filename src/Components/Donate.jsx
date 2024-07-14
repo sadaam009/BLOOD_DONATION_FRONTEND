@@ -7,8 +7,8 @@ export default function Donate() {
         name: '',
         email: '',
         phone: '',
-        bloodType: '',
-      Tariikh: '',
+        bloodtype: '',
+        Tariikh: '',
         message: ''
       });
     
@@ -84,9 +84,9 @@ export default function Donate() {
           Blood Type:
         </label>
         <select
-          id="bloodType"
-          name="bloodType"
-          value={doners.bloodType}
+          id="bloodtype"
+          name="bloodtype"
+          value={doners.bloodtype}
           onChange={handleChange}
           required
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

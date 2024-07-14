@@ -18,6 +18,13 @@ import User from './Dashcomponents/User'
 import Blooddoner from './Dashcomponents/Blooddoner'
 import Bloodrequest from './Dashcomponents/Bloodrequest'
 import Userupdate from './Dashcomponents/Userupdate'
+import Viewuser from './Dashcomponents/Viewuser'
+import Adduser from './Dashcomponents/Adduser'
+import Adddoner from './Dashcomponents/Adddoner'
+import Doneredit from './Dashcomponents/Doneredit'
+import Donerveiw from './Dashcomponents/Donerveiw'
+import Requestupdate from './Dashcomponents/Requestupdate'
+import Requestveiw from './Dashcomponents/Requestveiw'
 
 
 
@@ -40,6 +47,7 @@ function App() {
    <Route path='/contect' element={<Dashboard/>}/>
    <Route path='/signup' element={<Signup/>}/>
    <Route path='/login' element={<Login/>}/>
+   {/* <Route path='/logins' element={<Login/>}/> */}
     <Route path='/dashb' element={<Dash/>}/>
    <Route path='/donation' element={<Donation/>}/>
 
@@ -50,7 +58,14 @@ function App() {
    <Route path='/users' element={<User/>}/>
    <Route path='/donates' element={<Blooddoner/>}/>
    <Route path='/donations' element={<Bloodrequest/>}/>
-   <Route path='/donations' element={<Userupdate/>}/>
+   <Route path='/updateuser/:id' element={<Userupdate/>}/>
+   <Route path='/Edituser/:id' element={<Viewuser/>}/>
+   <Route path='/Kudaruser' element={<Adduser/>}/>
+   <Route path='/adddoner' element={<Adddoner/>}/>
+   <Route path='/editdoners/:id' element={<Doneredit/>}/>
+   <Route path='/viwdoner/:id' element={<Donerveiw/>}/>
+   <Route path='/updaterequest/:id' element={<Requestupdate/>}/>
+   <Route path='/Veiwdonations/:id' element={<Requestveiw/>}/>
    
       {/* Dashboard Routers */}
    

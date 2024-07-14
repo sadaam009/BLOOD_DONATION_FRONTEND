@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useParams,Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Userupdate = () => {
+const Adduser = () => {
     let navigate = useNavigate();
     const [user, setUser] = useState({
         name: "",
@@ -14,35 +14,31 @@ const Userupdate = () => {
         password: ""
     });
 
-    const { id } = useParams();
 
     const onInputChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     }
 
-    useEffect(() => {
-        loadUser();
-    }, []);
 
-    const userUpdate = async (e) => {
+    const Adduser = async (e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:9090/update/${id}`, user);
-        toast.success("Successfully Upadate✔✔✔👍😁  ");
+        await axios.post("http://localhost:9090/adduser", user);
+        toast.success("Successfully Adding User ✔✔✔👍😁  ");
         setTimeout(() => {
             navigate(-1);
         }, 3000);
     };
 
-    const loadUser = async () => {
-        const result = await axios.get(`http://localhost:9090/singleuserid/${id}`);
-        setUser(result.data);
-    };
+    // const loadUser = async () => {
+    //     const result = await axios.get(`http://localhost:9090/singleuserid/${id}`);
+    //     setUser(result.data);
+    // };
 
     return (
         <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
           <ToastContainer position="top-center" />
             <div className="bg-white p-4 rounded shadow-sm w-100" style={{ maxWidth: '400px' }}>
-                <h2 className="mb-4 text-center">Update User</h2>
+                <h2 className="mb-4 text-center font-bold">Update User</h2>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
                     <input
@@ -91,9 +87,9 @@ const Userupdate = () => {
                         required
                     />
                 </div>
-                <div className="d-grid space-y-2">
-                    <button onClick={userUpdate} className="btn btn-primary font-bold py-2 px-4">
-                        Update User
+                <div className="d-grid  space-y-2">
+                    <button onClick={Adduser} className="btn btn-primary py-2 font-bold px-4">
+                   Add User
                     </button>
                     <Link to="/users"  className="btn btn-danger font-bold py-2 px-4">
                    Cancel
@@ -104,4 +100,4 @@ const Userupdate = () => {
     );
 };
 
-export default Userupdate;
+export default Adduser;
