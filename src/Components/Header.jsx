@@ -19,7 +19,7 @@ export default function Header() {
             <Link className='text-[1.1rem] text-[#003366] font-semibold hover:bg-red-500 hover:py-1 hover:px-4 rounded hover:text-white' to="/about">Goals</Link>
             <Link className='text-[1.1rem] text-[#003366] font-semibold hover:bg-red-500 hover:py-1 hover:px-4 rounded hover:text-white' to="/donate">Donate Now</Link>
             <Link className='text-[1.1rem] text-[#003366] font-semibold hover:bg-red-500 hover:py-1 hover:px-4 rounded hover:text-white' to="/donation">Donation</Link>
-            <Link className='text-[1.1rem] text-[#003366] font-semibold hover:bg-red-500 hover:py-1 hover:px-4 rounded hover:text-white' to="/contect">More Info</Link>
+            <Link className='text-[1.1rem] text-[#003366] font-semibold hover:bg-red-500 hover:py-1 hover:px-4 rounded hover:text-white' to="/contect">Dashboard</Link>
           
         </div>
         <div className="flex space-x-2">

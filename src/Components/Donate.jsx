@@ -1,6 +1,9 @@
 
 import { useState } from 'react'
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Donate() {
     const [doners, setdoners] = useState({
@@ -11,7 +14,7 @@ export default function Donate() {
         Tariikh: '',
         message: ''
       });
-    
+      const navigate = useNavigate();
       const handleChange = (e) => {
         const { name, value } = e.target;
         setdoners({
@@ -24,7 +27,11 @@ export default function Donate() {
         try {
           const res = await axios.post("http://localhost:9090/adddonate", doners);
          setdoners(res.data);
-          alert("Successful Blood Request");
+         toast.success("Successfully Blood Doner");
+
+         setTimeout(() => {
+           navigate('/');
+         }, 2000);
         } catch (error) {
           console.log(error);
         }
@@ -32,9 +39,10 @@ export default function Donate() {
   return (
     <div className=' flex  bg-[#F5F5F5] w-[100vw] h-[110vh]  justify-center mt-[3rem] '>
 
-  
+
 
         <div className="mt-[2rem] space-y-2   ">
+        <ToastContainer position="top-center" />
         <h1 className=' text-center text-[2.5rem] font-semibold  '><span className='text-[#DC143C] space-y-3  '>Donation</span> Form</h1>
         <form onSubmit={Register} className=" bg-white  w-[40vw] rounded shadow-md mt-3 px-6 py-4">
       <div className="mb-4">

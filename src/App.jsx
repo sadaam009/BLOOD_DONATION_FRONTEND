@@ -25,6 +25,7 @@ import Doneredit from './Dashcomponents/Doneredit'
 import Donerveiw from './Dashcomponents/Donerveiw'
 import Requestupdate from './Dashcomponents/Requestupdate'
 import Requestveiw from './Dashcomponents/Requestveiw'
+import Adddrequest from './Dashcomponents/Addrequest'
 
 
 
@@ -39,7 +40,7 @@ function App() {
     <>
      <div className=" ">
  <Router>
- <Header/>
+ {/* <Header/> */}
   <Routes>
    <Route path='/' element={<Home/>}/>
    <Route path='/about' element={<About/>}/>
@@ -66,12 +67,13 @@ function App() {
    <Route path='/viwdoner/:id' element={<Donerveiw/>}/>
    <Route path='/updaterequest/:id' element={<Requestupdate/>}/>
    <Route path='/Veiwdonations/:id' element={<Requestveiw/>}/>
+   <Route path='/Add_Blood_Request' element={<Adddrequest/>}/>
    
       {/* Dashboard Routers */}
    
 
   </Routes>
-<Footer/>
+{/* <Footer/> */}
 
  </Router>
 

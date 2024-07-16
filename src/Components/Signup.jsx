@@ -23,7 +23,7 @@ const Signup = () => {
       toast.success("Successfully registered");
 
       setTimeout(() => {
-        navigate('/login');
+        navigate('/');
       }, 2000);
     } catch (error) {
       console.log(error);

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 const Donation = () => {
   const [bloodrequest, setbloodrequest] = useState({
     name: '',
@@ -10,7 +12,7 @@ const Donation = () => {
     hospital: '',
     Tariikh: '',
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setbloodrequest({
@@ -24,7 +26,11 @@ const Donation = () => {
     try {
       const res = await axios.post("http://localhost:9090/adddonation", bloodrequest);
       console.log(res.data);
-      alert("Successful Blood Request");
+      toast.success("Successfully Blood Request 👍");
+
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -32,6 +38,7 @@ const Donation = () => {
 
   return (
     <div className="bg-gray-100 w-full h-[85vh] mt-[3rem] relative">
+       <ToastContainer position="top-center" />
       <div className="absolute top-[8rem] right-[14rem] max-w-4xl mx-auto p-6 pt-[3rem] bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Blood Request Form</h2>
         <form onSubmit={Register} className="space-y-5">

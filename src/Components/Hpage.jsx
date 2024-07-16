@@ -12,9 +12,9 @@ export default function Hpage() {
                 act that has a profound impact on
                    </p>
            <div className=" space-x-2">
-           <button className='py-2 px-5 text-white bg-[#DC143C] rounded font-semibold  '>Donate Now</button>
+           <button className='py-2 px-4 text-white bg-[#DC143C] rounded font-semibold  '>Donate Now</button>
            <Link to='back'>
-           <button className='py-2 px-5  text-[#003366] border-2 border-[#DC143C] 
+           <button className='py-2 px-4  text-[#003366] border-2 border-[#DC143C] 
            rounded  hover:bg-[#DC143C] font-semibold hover:text-white hover:transition hover:duration-300 hover:ease-in-out '>More Info </button>
            
            </Link>

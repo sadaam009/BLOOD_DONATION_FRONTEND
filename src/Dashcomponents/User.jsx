@@ -4,6 +4,9 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Dashheader from './Dashheader';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function User() {
   const { id } = useParams();
@@ -21,6 +24,8 @@ export default function User() {
   const deleteUser = async (id) => {
     try {
       await axios.delete(`http://localhost:9090/userDelete/${id}`);
+      toast.success("Successfully User Delete");
+
       getAllUsers();
     } catch (error) {
       console.log(error);
@@ -39,6 +44,7 @@ export default function User() {
 
   return (
     <div className='flex relative'>
+       <ToastContainer position="top-center" />
       <Dashboard />
    
       

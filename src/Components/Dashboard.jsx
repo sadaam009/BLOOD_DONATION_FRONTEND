@@ -31,7 +31,7 @@ export default function Dashboard() {
       icone:ListChecks,
     },
     {
-      name:<Link to="/login">Logout</Link>,
+      name:<Link to="/">Logout</Link>,
       icone:Settings,
     },
   ]
