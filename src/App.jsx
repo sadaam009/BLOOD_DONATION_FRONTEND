@@ -26,6 +26,9 @@ import Donerveiw from './Dashcomponents/Donerveiw'
 import Requestupdate from './Dashcomponents/Requestupdate'
 import Requestveiw from './Dashcomponents/Requestveiw'
 import Adddrequest from './Dashcomponents/Addrequest'
+import Pagegoals from './Pages/Pagegoals'
+import Pagedonate from './Pages/Pagedonate'
+import Pagedonation from './Pages/Pagedonation'
 
 
 
@@ -43,14 +46,14 @@ function App() {
  {/* <Header/> */}
   <Routes>
    <Route path='/' element={<Home/>}/>
-   <Route path='/about' element={<About/>}/>
-   <Route path='/donate' element={<Donate/>}/>
+   <Route path='/about' element={<Pagegoals/>}/>
+   <Route path='/donate' element={<Pagedonate/>}/>
    <Route path='/contect' element={<Dashboard/>}/>
    <Route path='/signup' element={<Signup/>}/>
    <Route path='/login' element={<Login/>}/>
    {/* <Route path='/logins' element={<Login/>}/> */}
     <Route path='/dashb' element={<Dash/>}/>
-   <Route path='/donation' element={<Donation/>}/>
+   <Route path='/donation' element={<Pagedonation/>}/>
 
    {/* <Route path="*" element={<NotFound />} /> */}
 

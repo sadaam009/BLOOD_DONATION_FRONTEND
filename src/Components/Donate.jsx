@@ -116,9 +116,9 @@ export default function Donate() {
         </label>
         <input
           type="date"
-          id="lastDonationDate"
-          name="lastDonationDate"
-          value={doners.lastDonationDate}
+          id="Tariikh"
+          name="Tariikh"
+          value={doners.Tariikh}
           onChange={handleChange}
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
